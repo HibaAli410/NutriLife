@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriLife | Premium Nutrition & Vitality Directory</title>
+  <meta name="description" content="Discover science-backed nutrients and specialized nutrition advice for men, women, seniors, and kids. Empower your wellness journey.">
+  
+  <!-- Tailwind CSS v4 -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+    }
+    /* Glassmorphism utility */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .glass-effect-dark {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    /* Smooth transition */
+    .transition-all-300 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-full flex flex-col antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Responsive Navigation Header -->
+  <header class="sticky top-0 z-40 w-full transition-all-300 glass-effect border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group flex-shrink-0">
+          <div class="bg-emerald-600 text-white p-2.5 rounded-2xl shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-all-300">
+            <!-- SVG Leaf Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17M12 3c-4.5 0-9 3.5-9 9 0 3 2 5.5 5 6.5M12 3c4.5 0 9 3.5 9 9 0 3-2 5.5-5 6.5m-8-2h8" />
+            </svg>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+            Nutri<span class="text-emerald-600 font-extrabold">Life</span>
+          </span>
+        </a>
+
+        <!-- Search Bar (Middle) -->
+        <div class="hidden md:flex flex-1 max-w-md mx-4 relative">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input type="text" id="desktopSearchInput" placeholder="Search nutrients (e.g. Calcium, energy, zinc)..." 
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-100/80 focus:bg-white text-sm text-slate-800 placeholder-slate-400 rounded-xl border border-transparent focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200 outline-none">
+          <button id="desktopSearchClear" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="hidden lg:flex items-center gap-1.5 text-sm font-semibold text-slate-600">
+          <a href="#" class="px-4 py-2 rounded-xl text-emerald-600 bg-emerald-50">Home</a>
+          <a href="#gallerySection" class="px-4 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-all-300">Nutrients Gallery</a>
+          <a href="#benefitsSection" class="px-4 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-all-300">Health Benefits</a>
+          <a href="#aboutSection" class="px-4 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-all-300">About</a>
+        </nav>
+
+        <!-- Tablet / Mobile Controls -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <button id="mobileSearchToggleBtn" class="md:hidden p-2 text-slate-600 hover:text-emerald-600 rounded-xl hover:bg-slate-100 transition-colors" aria-label="Toggle Search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+          
+          <button id="menuToggleBtn" class="p-2.5 text-slate-600 hover:text-emerald-600 rounded-xl hover:bg-slate-100 transition-colors" aria-label="Toggle Menu">
+            <svg id="menuIconClosed" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Search Drawer (collapsible) -->
+    <div id="mobileSearchDrawer" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-3 flex gap-2">
+      <div class="relative flex-1">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input type="text" id="mobileSearchInput" placeholder="Search nutrients..." 
+          class="w-full pl-9 pr-8 py-2 bg-slate-100 text-sm text-slate-800 placeholder-slate-400 rounded-lg outline-none focus:bg-slate-50 focus:ring-2 focus:ring-emerald-500/20 border border-transparent focus:border-emerald-500">
+        <button id="mobileSearchClear" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sidebar Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+      <div class="px-4 pt-2 pb-6 space-y-1.5 text-base font-semibold text-slate-700">
+        <a href="#" class="block px-4 py-3 rounded-xl text-emerald-600 bg-emerald-50">Home</a>
+        <a href="#gallerySection" class="block px-4 py-3 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors">Nutrients Gallery</a>
+        <a href="#benefitsSection" class="block px-4 py-3 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors">Health Benefits</a>
+        <a href="#aboutSection" class="block px-4 py-3 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 text-white py-16 md:py-24">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-semibold tracking-wide uppercase">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Science-Backed Vitality Guide
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-slate-100">
+            Tailored Nutrition for <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400">
+              Every Stage of Life
+            </span>
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+            Unlock physical and cognitive potential. Explore custom nutrient profiles explicitly balanced for children, young men, women, and seniors.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+            <a href="#gallerySection" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+              Explore Nutrient Guide
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a href="#benefitsSection" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700/60 hover:border-slate-600 transition-all duration-200">
+              Why Micronutrients?
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic -->
+        <div class="lg:col-span-6 relative flex justify-center items-center">
+          <div class="relative w-full max-w-md md:max-w-lg aspect-square lg:aspect-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-700/30 group">
+            <img src="assets/hero_nutrition.png" alt="Healthy foods, fresh ingredients, and wellness elements representing nutrition science"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+          </div>
+          
+          <!-- Floating glass card 1 -->
+          <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-4 p-4 rounded-2xl glass-effect-dark shadow-xl animate-bounce" style="animation-duration: 4s;">
+            <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400 font-medium">Dietary Balance</p>
+              <p class="text-sm font-bold text-slate-100">100% Organic Focus</p>
+            </div>
+          </div>
+
+          <!-- Floating glass card 2 -->
+          <div class="absolute -top-6 -right-6 hidden sm:flex items-center gap-4 p-4 rounded-2xl glass-effect-dark shadow-xl animate-bounce" style="animation-duration: 5s;">
+            <div class="p-3 bg-teal-500/20 text-teal-400 rounded-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400 font-medium">Daily Vitality</p>
+              <p class="text-sm font-bold text-slate-100">Clean Energy Boost</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Nutrient Gallery Section -->
+  <section id="gallerySection" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 md:mb-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+        Tailored Nutrition Profiles
+      </h2>
+      <p class="text-slate-600 text-lg">
+        Explore core micronutrients and targeted nutritional profiles grouped by demographic.
+      </p>
+    </div>
+
+    <!-- Active Filters & Search Results Stats -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 pb-6 border-b border-slate-200">
+      
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 p-1 bg-slate-100 rounded-2xl w-full md:w-auto">
+        <button data-filter="all" class="filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-900 bg-white shadow-sm hover:scale-[1.02] transition-all-300 cursor-pointer">
+          All Demographics
+        </button>
+        <button data-filter="men" class="filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white/50 hover:scale-[1.02] transition-all-300 cursor-pointer">
+          Men
+        </button>
+        <button data-filter="women" class="filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white/50 hover:scale-[1.02] transition-all-300 cursor-pointer">
+          Women
+        </button>
+        <button data-filter="seniors" class="filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white/50 hover:scale-[1.02] transition-all-300 cursor-pointer">
+          Seniors
+        </button>
+        <button data-filter="kids" class="filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white/50 hover:scale-[1.02] transition-all-300 cursor-pointer">
+          Kids
+        </button>
+      </div>
+
+      <!-- Search Status Text -->
+      <div id="galleryStats" class="text-sm font-medium text-slate-500 text-center md:text-right">
+        Showing all available nutrition profiles.
+      </div>
+    </div>
+
+    <!-- Nutrient Cards Grid -->
+    <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      
+      <!-- Card 1: Men's Energy & Muscle -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="men" data-category="Vitality & Strength" data-title="Men's Energy & Muscle Support" data-image="assets/gallery_men.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_men.png" alt="Men's Energy & Muscle Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-500 text-white shadow-sm">
+            men
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Vitality & Strength</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Men's Energy & Muscle Support</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Optimizes natural energy production, cellular oxygenation, and muscular repair.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Zinc</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Magnesium</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Young and active men require robust energy metabolism and skeletal muscle support. This profile highlights nutrients critical for protein synthesis, cellular energy creation, and endocrine balance during high-activity periods.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Zinc</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 11 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Supports testosterone production, cellular protein synthesis, and immune health.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Magnesium</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 400-420 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Critical for muscle contraction, ATP energy synthesis, and sleep regulation.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin B12</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 2.4 mcg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Crucial for red blood cell formation, cognitive health, and nerve function.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Incorporate lean proteins (fish, chicken, beans) within 45 minutes post-exercise.</li>
+          <li class="leading-relaxed">Stay hydrated: aim for 3 liters of clean water daily.</li>
+          <li class="leading-relaxed">Prioritize 7-8 hours of sleep for optimum cellular repair.</li>
+        </div>
+      </div>
+
+      <!-- Card 2: Women's Balance & Support -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="women" data-category="Balance & Radiance" data-title="Women's Balance & Daily Support" data-image="assets/gallery_women.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_women.png" alt="Women's Balance & Daily Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-rose-500 text-white shadow-sm">
+            women
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Balance & Radiance</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Women's Balance & Daily Support</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Supports hormonal homeostasis, cellular energy, and reproductive wellness.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Iron</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Folate</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Women have distinct physiological demands linked to menstrual cycles, bone mineralization, and iron loss. This profile offers science-backed support to balance metabolic systems and maintain cellular vitality.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Iron</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 18 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Essential for hemoglobin production, avoiding fatigue, and maintaining red blood cells.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Folate (B9)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 400 mcg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Critical for cell division, neural development, and mood hormone regulation.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin B6</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1.3 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Aids in neurotransmitter synthesis and alleviating monthly cycle symptoms.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Combine plant-based iron sources (spinach, lentils) with Vitamin C for higher absorption.</li>
+          <li class="leading-relaxed">Keep a food journal to monitor patterns of energy and mood throughout the month.</li>
+          <li class="leading-relaxed">Manage stress levels with daily mindfulness to maintain cortisol-estrogen balance.</li>
+        </div>
+      </div>
+
+      <!-- Card 3: Seniors' Longevity & Joint -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="seniors" data-category="Longevity & Mobility" data-title="Golden Longevity & Joint Plan" data-image="assets/gallery_seniors.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_seniors.png" alt="Golden Longevity & Joint Plan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-amber-500 text-slate-950 shadow-sm">
+            seniors
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Longevity & Mobility</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Golden Longevity & Joint Plan</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Fosters bone density preservation, joint lubrication, and cardiovascular defense.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Calcium</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Vitamin D3</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">As we age, nutrient absorption decreases and bone density declines. This profile targets structural protection, joint fluidity, and high-impact antioxidants to maintain active lifestyle vitality.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Calcium</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1,200 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Provides the fundamental building blocks for skeletal bone density and health.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin D3</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 800-1000 IU/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Crucial for calcium absorption and cellular immune defense regulation.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Glucosamine</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1,500 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Supports cartilage integrity and encourages synovial fluid production.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Engage in low-impact weight-bearing exercises (brisk walking, water aerobics).</li>
+          <li class="leading-relaxed">Ensure sufficient protein intake to prevent age-related muscle loss (sarcopenia).</li>
+          <li class="leading-relaxed">Stay socially active and participate in cognitive training exercises daily.</li>
+        </div>
+      </div>
+
+      <!-- Card 4: Kids' Immune Shield -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="kids" data-category="Growth & Immunity" data-title="Kids' Immune Shield & Growth" data-image="assets/gallery_kids.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_kids.png" alt="Kids' Immune Shield & Growth" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-emerald-500 text-slate-950 shadow-sm">
+            kids
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Growth & Immunity</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Kids' Immune Shield & Growth</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Builds bone matrix, boosts leukocyte immunity, and supports tissue cell growth.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Vitamin C</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Calcium</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Rapidly growing bodies require dense nutritional substrates. Focus is placed on bone fortification, immune cell readiness, and tissue cell creation for healthy children's development.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin C</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 25-45 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Powerful antioxidant that enhances neutrophil immune cell activity and tissue recovery.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Calcium</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1,000 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Builds strong mineralized bones and dense, healthy dental structures.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin D3</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 600 IU/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Regulates mineral deposition into bones and supports innate immunity.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Ensure kids get at least 60 minutes of active physical play outdoors in sunlight.</li>
+          <li class="leading-relaxed">Serve colorful plates: fruits and vegetables of different hues provide diverse phytonutrients.</li>
+          <li class="leading-relaxed">Limit processed sugars which can temporarily suppress immune cell effectiveness.</li>
+        </div>
+      </div>
+
+      <!-- Card 5: Men's Cardiovascular -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="men" data-category="Cardio & Circulation" data-title="Men's Cardiovascular Booster" data-image="assets/gallery_men.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_men.png" alt="Men's Cardiovascular Booster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-500 text-white shadow-sm">
+            men
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Cardio & Circulation</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Men's Cardiovascular Booster</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Promotes arterial flexibility, cholesterol balance, and metabolic health.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Omega-3</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">CoQ10</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Cardiovascular health is a key priority for adult men. This profile focuses on lipid metabolism, reducing arterial inflammation, and maintaining healthy heart muscle contraction.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Omega-3 (EPA/DHA)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1,600 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Lowers triglycerides, stabilizes arterial plaques, and reduces vascular inflammation.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Coenzyme Q10</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 100-200 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Acts as a cellular catalyst for mitochondrial energy inside myocardial heart tissues.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin E</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 15 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Prevents LDL cholesterol oxidation and protects blood vessel walls.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Consume fatty fish (wild salmon, sardines) twice a week.</li>
+          <li class="leading-relaxed">Incorporate raw garlic and extra virgin olive oil into meals daily.</li>
+          <li class="leading-relaxed">Engage in at least 150 minutes of moderate cardiovascular exercise per week.</li>
+        </div>
+      </div>
+
+      <!-- Card 6: Women's Hair, Skin & Joint -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="women" data-category="Skin, Hair & Joints" data-title="Women's Hair, Skin & Joint Care" data-image="assets/gallery_women.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_women.png" alt="Women's Hair, Skin & Joint Care" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-rose-500 text-white shadow-sm">
+            women
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Skin, Hair & Joints</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Women's Hair, Skin & Joint Care</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Boosts natural collagen synthesis, skin hydration, and soft tissue elasticity.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Collagen</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Vitamin C</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Environmental stress and aging impact skin moisture and connective tissues. This profile focuses on building blocks for collagen, deep tissue hydration, and capillary defense.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Collagen Peptides</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 5-10 g/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Direct amino acid building blocks for dermis repair and joint cartilage protection.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin C</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 75 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Essential co-factor for collagen synthesis and skin cellular antioxidant defense.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Biotin (B7)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 30 mcg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Optimizes keratin infrastructure for thicker hair and stronger nail matrixes.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Stay hydrated: drink at least 8 glasses of water to maintain skin hydration.</li>
+          <li class="leading-relaxed">Wear broad-spectrum sunscreen daily to prevent UV-induced collagen degradation.</li>
+          <li class="leading-relaxed">Add bone broths or dark berries to your diet for cell-protecting polyphenols.</li>
+        </div>
+      </div>
+
+      <!-- Card 7: Seniors' Brain & Bone -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="seniors" data-category="Brain & Bone Density" data-title="Senior Bone & Cognitive Health" data-image="assets/gallery_seniors.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_seniors.png" alt="Senior Bone & Cognitive Health" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-amber-500 text-slate-950 shadow-sm">
+            seniors
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Brain & Bone Density</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Senior Bone & Cognitive Health</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Supports neural cell membranes, synaptic memory, and skeletal resilience.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Vitamin B12</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Vitamin D3</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Aging demands targeted neurological support to maintain memory clarity and executive function, alongside advanced bone fortification to prevent fractures.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin B12 (Cobalamin)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 2.4 mcg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Prevents cognitive decline and maintains protective neural myelin sheaths.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Vitamin D3 & K2</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1000 IU / 90 mcg</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Synergistic pair directing calcium out of circulatory arteries and into skeletal bones.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Omega-3 (DHA)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 1,000 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Constitutes major structural lipids of the cerebral cortex vital for memory retention.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Incorporate green leafy vegetables and walnuts, rich in alpha-linolenic acid (ALA).</li>
+          <li class="leading-relaxed">Read, solve puzzles, or learn a new language to stimulate neuroplasticity.</li>
+          <li class="leading-relaxed">Perform simple balance exercises daily to reduce the risk of accidental slips.</li>
+        </div>
+      </div>
+
+      <!-- Card 8: Kids' Cognitive Development -->
+      <div class="nutrient-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:-translate-y-1.5 transition-all-300 flex flex-col cursor-pointer group" 
+           data-demographic="kids" data-category="Brain & Cognitive" data-title="Kids' Cognitive & Brain Support" data-image="assets/gallery_kids.png" onclick="openNutrientModal(this)">
+        <div class="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+          <img src="assets/gallery_kids.png" alt="Kids' Cognitive & Brain Support" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-emerald-500 text-slate-950 shadow-sm">
+            kids
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Brain & Cognitive</span>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors">Kids' Cognitive & Brain Support</h3>
+            <p class="text-slate-500 text-xs font-light leading-relaxed line-clamp-2">Nourishes rapid synaptic pathways, improves focus, and prevents learning fatigue.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex flex-col justify-between h-full">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">DHA</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">Iron</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-400 rounded">+1 more</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              View Nutrient Plan &rarr;
+            </span>
+          </div>
+        </div>
+        <!-- Hidden modal data payload -->
+        <div class="hidden data-overview">Children's brains construct millions of neural synapses daily. Providing adequate structural lipids and mineral co-factors supports school focus, memory retention, and stress regulation.</div>
+        <div class="hidden data-nutrients">
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">DHA (Omega-3)</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 250-500 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Acts as a primary structural element of brain tissue and retinal membranes.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Iron</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 7-10 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Critical for cognitive development, neurotransmitter synthesis, and concentration during school.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1"><span class="font-bold text-slate-800 text-sm">Choline</span><span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">RDA: 200-375 mg/day</span></div>
+            <p class="text-xs text-slate-500 font-light leading-relaxed">Precursor to acetylcholine, the neurotransmitter vital for memory storage and logical learning.</p>
+          </div>
+        </div>
+        <div class="hidden data-tips">
+          <li class="leading-relaxed">Offer eggs (rich in choline) and walnuts (omega-3) as healthy study snacks.</li>
+          <li class="leading-relaxed">Encourage deep, restful sleep: children aged 6-12 need 9-12 hours per night.</li>
+          <li class="leading-relaxed">Support interactive learning activities rather than excessive passive screen time.</li>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- No results indicator -->
+    <div id="noResults" class="hidden text-center py-16 space-y-4">
+      <div class="inline-flex p-4 bg-amber-50 text-amber-500 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900">No Nutrition Profiles Found</h3>
+      <p class="text-slate-500 max-w-md mx-auto">We couldn't find any nutrient profiles matching your search criteria. Try typing something else like "Calcium", "Zinc", or "Vitamins".</p>
+      <button id="resetSearchBtn" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl shadow transition-colors cursor-pointer">
+        Reset Search & Filters
+      </button>
+    </div>
+  </section>
+
+  <!-- Health Benefits Section -->
+  <section id="benefitsSection" class="bg-slate-100 py-16 md:py-24 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-sm font-semibold tracking-wide uppercase">
+            Vitamins & Minerals
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            Why Nutrients Matter for Daily Vitality
+          </h2>
+          <p class="text-slate-600 leading-relaxed font-light">
+            Vitamins, minerals, and essential compounds act as co-factors in thousands of biochemical reactions throughout the body. They maintain bone density, drive cellular energy production, reinforce the blood-brain barrier, and optimize immunological defense networks.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="p-1.5 bg-emerald-500/10 text-emerald-700 rounded-lg mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">Bioavailability First</h4>
+                <p class="text-sm text-slate-500">We prioritize whole food sources and highly absorbable chemical formulations.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="p-1.5 bg-emerald-500/10 text-emerald-700 rounded-lg mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">Stage-Specific Requirements</h4>
+                <p class="text-sm text-slate-500">Dosages fluctuate with age. Our guides track RDA levels from childhood to senior living.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 flex items-center justify-center bg-sky-50 text-sky-600 rounded-xl mb-4 font-extrabold text-lg">A</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Cognitive Agility</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Omega-3 DHA and B-Vitamins maintain neural integrity, myelin sheath stability, and synthesis of essential neurotransmitters.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 flex items-center justify-center bg-rose-50 text-rose-600 rounded-xl mb-4 font-extrabold text-lg">B</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Bone Strength</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Calcium alone is not enough. Vitamin D3 and K2 work synergistically to deposit calcium directly into skeletal matrix.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 flex items-center justify-center bg-amber-50 text-amber-600 rounded-xl mb-4 font-extrabold text-lg">C</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Immunological Defense</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Zinc and Vitamin C enhance macrophage activity, support T-cell replication, and provide robust cell wall antioxidant protection.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 flex items-center justify-center bg-emerald-50 text-emerald-600 rounded-xl mb-4 font-extrabold text-lg">D</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Cellular Energy</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Coenzyme Q10 and Magnesium optimize mitochondrial function, ensuring efficient conversion of macronutrients to ATP.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="aboutSection" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-slate-900 to-emerald-950 text-white relative overflow-hidden shadow-2xl">
+      <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+      
+      <div class="relative z-10 max-w-3xl space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Our Mission: NutriLife Education</h2>
+        <p class="text-slate-300 text-base md:text-lg font-light leading-relaxed">
+          At NutriLife, we believe that understanding nutrients is the bedrock of preventative wellness. Our platform breaks down medical research into intuitive, accessible guidelines. We focus on stage-of-life adjustments, highlighting how age changes biochemical demands.
+        </p>
+        <div class="flex flex-wrap gap-6 pt-4 text-sm text-slate-300 font-medium">
+          <div class="flex items-center gap-2">
+            <span class="p-1 bg-emerald-500/20 text-emerald-400 rounded-lg">✓</span> Science-backed data
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="p-1 bg-emerald-500/20 text-emerald-400 rounded-lg">✓</span> Fully tablet optimized layout
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="p-1 bg-emerald-500/20 text-emerald-400 rounded-lg">✓</span> Clean ingredient guidance
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-slate-900 text-slate-400 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="bg-emerald-600 text-white p-2 rounded-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-none stroke-current" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v17M12 3c-4.5 0-9 3.5-9 9 0 3 2 5.5 5 6.5M12 3c4.5 0 9 3.5 9 9 0 3-2 5.5-5 6.5m-8-2h8" />
+              </svg>
+            </div>
+            <span class="text-lg font-bold text-white tracking-tight">Nutri<span class="text-emerald-500">Life</span></span>
+          </div>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">
+            Your definitive micronutrients library, providing dietary structure and wellness wisdom tailored for children, parents, and seniors.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Explore</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Home</a></li>
+            <li><a href="#gallerySection" class="hover:text-emerald-400 transition-colors">Nutrients Directory</a></li>
+            <li><a href="#benefitsSection" class="hover:text-emerald-400 transition-colors">Why Micronutrients?</a></li>
+            <li><a href="#aboutSection" class="hover:text-emerald-400 transition-colors">Platform About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Demographics</h4>
+          <ul class="space-y-2 text-sm">
+            <li><button onclick="applyFooterFilter('men')" class="text-left hover:text-emerald-400 transition-colors cursor-pointer">Men's Profiles</button></li>
+            <li><button onclick="applyFooterFilter('women')" class="text-left hover:text-emerald-400 transition-colors cursor-pointer">Women's Profiles</button></li>
+            <li><button onclick="applyFooterFilter('seniors')" class="text-left hover:text-emerald-400 transition-colors cursor-pointer">Seniors' Profiles</button></li>
+            <li><button onclick="applyFooterFilter('kids')" class="text-left hover:text-emerald-400 transition-colors cursor-pointer">Kids' Profiles</button></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Medical Disclaimer</h4>
+          <p class="text-xs text-slate-600 leading-relaxed font-light">
+            Statements on this website are for educational purposes and have not been evaluated by the FDA. This information is not intended to diagnose, treat, cure, or prevent any disease. Always consult with a qualified physician before altering supplements.
+          </p>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <p>&copy; 2026 NutriLife Health Sciences. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Details Modal Backdrop -->
+  <div id="detailModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="modalContent" class="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl overflow-y-auto shadow-2xl border border-slate-200 scale-95 opacity-0 transition-all duration-300 flex flex-col md:flex-row">
+      
+      <!-- Left side: Image -->
+      <div class="w-full md:w-5/12 h-64 md:h-auto min-h-[250px] relative bg-slate-900 flex-shrink-0">
+        <img id="modalImage" src="" alt="Demographic profile" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 text-white space-y-1">
+          <span id="modalBadge" class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">
+            DEMOGRAPHIC
+          </span>
+          <h3 id="modalCardTitle" class="text-2xl font-extrabold tracking-tight">Profile Title</h3>
+        </div>
+      </div>
+
+      <!-- Right side: Information -->
+      <div class="w-full md:w-7/12 p-6 md:p-8 flex flex-col justify-between">
+        <button onclick="closeModal()" class="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 rounded-full transition-all duration-200 z-10 shadow-sm cursor-pointer" aria-label="Close Modal">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1.5">Overview</h4>
+            <p id="modalDescription" class="text-slate-600 text-sm leading-relaxed font-light">Overview text</p>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Key Micronutrients & Benefits</h4>
+            <div id="modalNutrientsList" class="space-y-3"></div>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Diet & Lifestyle Guidelines</h4>
+            <ul id="modalTipsList" class="list-disc pl-5 text-slate-600 text-sm space-y-1 font-light"></ul>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-slate-100 flex justify-end">
+          <button onclick="closeModal()" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl transition-colors cursor-pointer">
+            Close View
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Basic Inline JavaScript -->
+  <script>
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const cards = document.querySelectorAll('.nutrient-card');
+    const tabs = document.querySelectorAll('.filter-tab');
+    const stats = document.getElementById('galleryStats');
+    const cardsGrid = document.getElementById('cardsGrid');
+    const noResults = document.getElementById('noResults');
+
+    const deskInput = document.getElementById('desktopSearchInput');
+    const mobInput = document.getElementById('mobileSearchInput');
+    const deskClear = document.getElementById('desktopSearchClear');
+    const mobClear = document.getElementById('mobileSearchClear');
+
+    const detailModal = document.getElementById('detailModal');
+    const modalContent = document.getElementById('modalContent');
+
+    // Filter Cards function
+    function filterCards() {
+      let matchCount = 0;
+      const cleanSearch = searchQuery.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const dem = card.dataset.demographic;
+        const title = card.dataset.title.toLowerCase();
+        const cat = card.dataset.category.toLowerCase();
+        const bodyText = card.querySelector('p').textContent.toLowerCase();
+        const overview = card.querySelector('.data-overview').textContent.toLowerCase();
+        const nutrients = card.querySelector('.data-nutrients').textContent.toLowerCase();
+
+        const matchesDem = (activeFilter === 'all' || dem === activeFilter);
+        const matchesSearch = !cleanSearch || 
+                              title.includes(cleanSearch) || 
+                              cat.includes(cleanSearch) || 
+                              bodyText.includes(cleanSearch) ||
+                              overview.includes(cleanSearch) ||
+                              nutrients.includes(cleanSearch);
+
+        if (matchesDem && matchesSearch) {
+          card.classList.remove('hidden');
+          matchCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Update UI state based on matches
+      if (matchCount === 0) {
+        cardsGrid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        stats.textContent = `0 profiles found matching "${searchQuery}"`;
+      } else {
+        cardsGrid.classList.remove('hidden');
+        noResults.classList.add('hidden');
+        if (searchQuery) {
+          stats.innerHTML = `Found <strong class="text-slate-800 font-bold">${matchCount}</strong> match${matchCount > 1 ? 'es' : ''} for "${searchQuery}"`;
+        } else {
+          stats.innerHTML = `Showing <strong class="text-slate-800 font-bold">${matchCount}</strong> profile${matchCount > 1 ? 's' : ''} for <span class="capitalize text-emerald-600 font-bold">${activeFilter}</span>`;
+        }
+      }
+    }
+
+    // Tab filtering trigger
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activeFilter = tab.dataset.filter;
+        tabs.forEach(t => {
+          if (t.dataset.filter === activeFilter) {
+            t.className = "filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-900 bg-white shadow-sm hover:scale-[1.02] transition-all-300 cursor-pointer";
+          } else {
+            t.className = "filter-tab px-5 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-white/50 hover:scale-[1.02] transition-all-300 cursor-pointer";
+          }
+        });
+        filterCards();
+      });
+    });
+
+    // Sync search inputs
+    function syncSearch(e) {
+      const val = e.target.value;
+      searchQuery = val;
+      deskInput.value = val;
+      mobInput.value = val;
+
+      if (val.trim()) {
+        deskClear.classList.remove('hidden');
+        mobClear.classList.remove('hidden');
+      } else {
+        deskClear.classList.add('hidden');
+        mobClear.classList.add('hidden');
+      }
+      filterCards();
+    }
+
+    deskInput.addEventListener('input', syncSearch);
+    mobInput.addEventListener('input', syncSearch);
+
+    function clearSearch() {
+      searchQuery = '';
+      deskInput.value = '';
+      mobInput.value = '';
+      deskClear.classList.add('hidden');
+      mobClear.classList.add('hidden');
+      filterCards();
+    }
+
+    deskClear.addEventListener('click', clearSearch);
+    mobClear.addEventListener('click', clearSearch);
+    document.getElementById('resetSearchBtn').addEventListener('click', () => {
+      clearSearch();
+      tabs[0].click(); // Reset to all
+    });
+
+    function applyFooterFilter(dem) {
+      activeFilter = dem;
+      const matchingTab = Array.from(tabs).find(t => t.dataset.filter === dem);
+      if (matchingTab) matchingTab.click();
+      document.getElementById('gallerySection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Modal Operations
+    function openNutrientModal(card) {
+      const dem = card.dataset.demographic;
+      const title = card.dataset.title;
+      const img = card.dataset.image;
+
+      document.getElementById('modalImage').src = img;
+      document.getElementById('modalImage').alt = title;
+      document.getElementById('modalCardTitle').textContent = title;
+      
+      const badge = document.getElementById('modalBadge');
+      badge.textContent = dem;
+      if (dem === 'men') badge.className = "inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-blue-500 text-white";
+      else if (dem === 'women') badge.className = "inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-rose-500 text-white";
+      else if (dem === 'seniors') badge.className = "inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-amber-500 text-slate-950";
+      else badge.className = "inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-emerald-500 text-slate-950";
+
+      document.getElementById('modalDescription').textContent = card.querySelector('.data-overview').textContent;
+      document.getElementById('modalNutrientsList').innerHTML = card.querySelector('.data-nutrients').innerHTML;
+      document.getElementById('modalTipsList').innerHTML = card.querySelector('.data-tips').innerHTML;
+
+      // Show modal
+      document.body.style.overflow = "hidden";
+      detailModal.classList.remove("pointer-events-none");
+      detailModal.classList.add("opacity-100");
+      modalContent.classList.remove("scale-95", "opacity-0");
+      modalContent.classList.add("scale-100", "opacity-100");
+    }
+
+    function closeModal() {
+      document.body.style.overflow = "";
+      detailModal.classList.remove("opacity-100");
+      detailModal.classList.add("pointer-events-none");
+      modalContent.classList.remove("scale-100", "opacity-100");
+      modalContent.classList.add("scale-95", "opacity-0");
+    }
+
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+        document.getElementById('mobileMenu').classList.add('hidden');
+        document.getElementById('menuIconClosed').classList.remove('hidden');
+        document.getElementById('menuIconOpen').classList.add('hidden');
+      }
+    });
+
+    // Mobile navigation & search toggle
+    document.getElementById('menuToggleBtn').addEventListener('click', () => {
+      const mobMenu = document.getElementById('mobileMenu');
+      const closedIco = document.getElementById('menuIconClosed');
+      const openIco = document.getElementById('menuIconOpen');
+      mobMenu.classList.toggle('hidden');
+      closedIco.classList.toggle('hidden');
+      openIco.classList.toggle('hidden');
+    });
+
+    document.getElementById('mobileSearchToggleBtn').addEventListener('click', () => {
+      const drawer = document.getElementById('mobileSearchDrawer');
+      drawer.classList.toggle('hidden');
+      if (!drawer.classList.contains('hidden')) {
+        mobInput.focus();
+      }
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.add('hidden');
+        document.getElementById('menuIconClosed').classList.remove('hidden');
+        document.getElementById('menuIconOpen').classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
